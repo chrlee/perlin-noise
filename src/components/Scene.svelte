@@ -47,7 +47,7 @@
     switch (screen.orientation.type) {
       case 'portrait-primary':
       case 'portrait-secondary':
-        ref.position.set(40, 20, 60);
+        ref.position.set(20, 20, 50);
         break;
       default:
         ref.position.set(10, 10, 30);
