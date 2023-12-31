@@ -1,9 +1,6 @@
 export async function shopifyFetch({ query, variables }) {
-  const endpoint =
-    import.meta.env.VITE_SHOPIFY_API_ENDPOINT;
-  const key =
-    import.meta.env.VITE_SHOPIFY_STOREFRONT_API_TOKEN;
-
+  const endpoint = import.meta.env.VITE_SHOPIFY_API_ENDPOINT;
+  const key = import.meta.env.VITE_SHOPIFY_STOREFRONT_API_TOKEN;
 
   try {
     const result = await fetch(endpoint, {
@@ -14,7 +11,7 @@ export async function shopifyFetch({ query, variables }) {
       },
       body: { query, variables } && JSON.stringify({ query, variables })
     });
-    
+
     return {
       status: result.status,
       body: await result.json()
@@ -362,7 +359,6 @@ export async function updateCart({ cartId, lineId, variantId, quantity }) {
 }
 
 export async function addToCart({ cartId, variantId }) {
-
   return shopifyFetch({
     query: `
       mutation addToCart($cartId: ID!, $lines: [CartLineInput!]!) {

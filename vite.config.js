@@ -2,7 +2,8 @@ import { sveltekit } from '@sveltejs/kit/vite';
 
 /** @type {import('vite').UserConfig} */
 const config = {
-  plugins: [sveltekit()]
+  plugins: [sveltekit()],
+  ssr: { noExternal: ['three','postprocessing']}
 };
 
 export default config;

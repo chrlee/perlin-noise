@@ -13,8 +13,8 @@ export async function load() {
       };
     }
 
-    throw error(404)
-  }  else {
-    throw error(res.status)
+    throw error(404);
+  } else {
+    throw error(res.status);
   }
 }

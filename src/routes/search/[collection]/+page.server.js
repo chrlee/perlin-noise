@@ -12,8 +12,8 @@ export async function load() {
       };
     }
 
-    throw error(404)
+    throw error(404);
   } else {
-    throw error(res.status)
+    throw error(res.status);
   }
 }

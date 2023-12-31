@@ -1,6 +1,7 @@
 <script>
-  import ThreeItemGrid from '$components/ThreeItemGrid.svelte';
+  import { Canvas } from '@threlte/core';
   import Carousel from '$components/Carousel.svelte';
+  import Scene from '$components/Scene.svelte';
 
   /** @type {import('./$types').PageData} */
   export let data;
@@ -14,10 +15,10 @@
 </svelte:head>
 
 <main>
-  <section>
-    <div class="lg:h-[90vh]">
-      <ThreeItemGrid products={featuredCollection} />
-    </div>
+  <section id="scene">
+      <Canvas>
+        <Scene /> 
+      </Canvas>
   </section>
   <section>
     <Carousel items={clothesCollection} />
@@ -44,3 +45,9 @@
     </div>
   </section>
 </main>
+
+<style>
+  #scene {
+    height: 80vh;
+  }
+</style>

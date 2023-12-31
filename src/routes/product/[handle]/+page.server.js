@@ -17,9 +17,9 @@ export async function load({ params }) {
       };
     }
 
-    throw error(404)
+    throw error(404);
   } else {
-    let status = resOne.status !== 200 ? resOne.status : resTwo.status
-    throw error(status)
+    let status = resOne.status !== 200 ? resOne.status : resTwo.status;
+    throw error(status);
   }
 }
