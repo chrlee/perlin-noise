@@ -23,7 +23,7 @@
             href={`/product/${product.node.handle}`}
             price={product.node.priceRange.maxVariantPrice.amount}
             currencyCode={product.node.priceRange.maxVariantPrice.currencyCode}
-            imageSrc={product.node.images.edges[0].node.originalSrc}
+            imageSrc={product.node.images.edges[0]?.node.originalSrc}
           />
         </div>
       </li>

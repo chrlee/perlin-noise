@@ -44,7 +44,15 @@
 <T.PerspectiveCamera
   makeDefault
   on:create={({ ref }) => {
-    ref.position.set(20, 10, 30);
+    switch (screen.orientation.type) {
+      case 'portrait-primary':
+      case 'portrait-secondary':
+        ref.position.set(40, 20, 60);
+        break;
+      default:
+        ref.position.set(15, 15, 30);
+        break;
+    }
   }}
 >
   <OrbitControls

@@ -33,7 +33,7 @@
       fetchpriority={priority === 'eager' ? 'high' : 'low'}
       decoding="async"
       loading={priority}
-      src={imageSrc}
+      src={imageSrc || ''}
     />
     {#if !removeLabels}
       <div class="absolute top-0 left-0">
