@@ -15,7 +15,7 @@
 </svelte:head>
 
 <main>
-  <section id="scene">
+  <section class="canvas">
       <Canvas>
         <Scene /> 
       </Canvas>
@@ -47,7 +47,7 @@
 </main>
 
 <style>
-  #scene {
+  .canvas {
     height: 80vh;
   }
 </style>

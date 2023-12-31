@@ -51,8 +51,8 @@
   <OrbitControls
     enableDamping
     autoRotate
-    autoRotateSpeed={0.1}
-    rotateSpeed={0.1}
+    autoRotateSpeed={0.15}
+    rotateSpeed={0.15}
     enablePan={false}
     target.y={0}
   />
