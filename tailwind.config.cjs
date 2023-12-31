@@ -6,7 +6,7 @@ module.exports = {
         svelteOrange: '#FF3E00',
         svelteDark: '#F03A00',
         hotPink: '#FF1966',
-        dark: '#111111',
+        dark: '#121212',
         light: '#FAFAFA'
       }
     }

@@ -50,7 +50,7 @@
         ref.position.set(40, 20, 60);
         break;
       default:
-        ref.position.set(15, 15, 30);
+        ref.position.set(10, 10, 30);
         break;
     }
   }}
@@ -75,7 +75,7 @@
 {#if textGeometry}
 <T.Mesh
   bind:geometry={textGeometry}
-  position={[-10, 0, 10]}
+  position={[-10, 0.5, 10]}
   >
   <T.MeshBasicMaterial
     wireframe={true}

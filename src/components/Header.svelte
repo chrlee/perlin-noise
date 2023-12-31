@@ -22,8 +22,8 @@
   }
 </script>
 
-<nav class="flex p-4 lg:px-6">
-  <div class="flex w-1/3 items-baseline">
+<nav class="p-4 lg:px-6">
+  <div class="flex items-baseline">
     <div class="mr-4" class:active={currentRoute === '/'}>
       <a href="/" data-sveltekit-prefetch class="">
         <h1 class="text-2xl font-thin text-white">perlin noise</h1> 
@@ -43,7 +43,7 @@
       {/each}
     </div>
   </div>
-  <div class="hidden w-1/3 lg:block">
+  <div class="hidden lg:block ml-4 items-baseline">
     <SearchBar />
   </div>
   <div class="ml-auto flex items-center">
@@ -118,7 +118,6 @@
 <style>
   nav {
     display: flex;
-    align-items: center;
+    align-items: baseline;
   }
-
 </style>

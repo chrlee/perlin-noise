@@ -37,6 +37,15 @@ const perm = [
   254, 138, 236, 205, 93, 222, 114, 67, 29, 24, 72, 243, 141, 128, 195, 78, 66, 215, 61, 156, 180
 ];
 
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+shuffle(perm);
+
 function grad3(hash, x, y, z) {
   let h = hash & 15; // Convert low 4 bits of hash code into 12 simple
   let u = h < 8 ? x : y; // gradient directions, and compute dot product.

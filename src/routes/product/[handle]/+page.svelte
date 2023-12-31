@@ -12,7 +12,9 @@
   let currentImageIndex = 0;
 
   $: highlightedImageSrc = data?.body?.product?.images?.edges[currentImageIndex]?.node?.originalSrc;
+  $: oos = !data?.body?.product?.availableForSale;
 
+  console.log(JSON.stringify(data, null, 2));
   data?.body?.product?.options.forEach((option) => {
     selectedOptions = { ...selectedOptions, [option.name]: option.values[0] };
   });
@@ -133,6 +135,7 @@
         <p class="text-sm">{data.body.product.description}</p> 
         <button
           on:click={addToCart}
+          disabled={oos}
           class="mt-6 flex w-full items-center justify-center bg-light p-4 text-sm uppercase tracking-wide text-black opacity-90 hover:opacity-100"
         >
           {#if cartLoading}
@@ -143,7 +146,11 @@
               <div />
             </div>
           {:else}
+            {#if oos}
+              <span>Out of Stock</span>
+            {:else}
             <span>Add To Cart</span>
+            {/if}
           {/if}
 
         </button>
