@@ -22,22 +22,11 @@
   }
 </script>
 
-<nav class="flex items-center border-b border-zinc-700 p-4 lg:px-6">
-  <div class="flex w-1/3 items-center">
+<nav class="flex p-4 lg:px-6">
+  <div class="flex w-1/3 items-baseline">
     <div class="mr-4" class:active={currentRoute === '/'}>
       <a href="/" data-sveltekit-prefetch class="">
-        <picture>
-          <source srcset="/svelte_logo.png" type="image/png" />
-          <img
-            alt="Svelte Logo"
-            class="h-[38] w-[32]"
-            decoding="async"
-            height={38}
-            loading="eager"
-            src="/svelte_logo.png"
-            width={32}
-          />
-        </picture>
+        <h1 class="text-2xl font-thin text-white">perlin noise</h1> 
       </a>
     </div>
     <div class="hidden lg:flex">
@@ -125,3 +114,11 @@
     </div>
   {/if}
 </nav>
+
+<style>
+  nav {
+    display: flex;
+    align-items: center;
+  }
+
+</style>

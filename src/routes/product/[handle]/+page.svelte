@@ -130,40 +130,22 @@
             </div>
           </div>
         {/each}
-        <p class="text-sm">{data.body.product.description}</p>
-        <div class="mt-8 flex items-center justify-between">
-          <div class="flex items-center">
-            <div class="mr-1">
-              <Icons type="star" />
-            </div>
-            <div class="mr-1">
-              <Icons type="star" />
-            </div>
-            <div class="mr-1">
-              <Icons type="star" />
-            </div>
-            <div class="mr-1">
-              <Icons type="star" />
-            </div>
-            <div class="mr-1 opacity-50">
-              <Icons type="star" />
-            </div>
-          </div>
-          <div class="text-sm opacity-50">36 Reviews</div>
-        </div>
+        <p class="text-sm">{data.body.product.description}</p> 
         <button
           on:click={addToCart}
           class="mt-6 flex w-full items-center justify-center bg-light p-4 text-sm uppercase tracking-wide text-black opacity-90 hover:opacity-100"
         >
-          <span>Add To Cart</span>
           {#if cartLoading}
-            <div class="lds-ring ml-4">
+            <div class="lds-ring">
               <div />
               <div />
               <div />
               <div />
             </div>
+          {:else}
+            <span>Add To Cart</span>
           {/if}
+
         </button>
         <DescriptionToggle
           title="Care"

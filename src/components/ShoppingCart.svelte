@@ -117,14 +117,15 @@
         on:click={checkout}
         class="mt-6 flex w-full items-center justify-center bg-white p-3 text-sm font-medium uppercase text-black opacity-90 hover:opacity-100"
       >
-        <span>Proceed to Checkout</span>
         {#if loading}
-          <div class="lds-ring ml-4">
+          <div class="lds-ring">
             <div />
             <div />
             <div />
             <div />
           </div>
+        {:else}
+          <span>Proceed to Checkout</span>
         {/if}
       </button>
     {/if}

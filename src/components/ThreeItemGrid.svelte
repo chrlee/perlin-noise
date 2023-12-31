@@ -12,7 +12,7 @@
       title={products[0].node.title}
       price={products[0].node.priceRange.maxVariantPrice.amount}
       currencyCode={products[0].node.priceRange.maxVariantPrice.currencyCode}
-      imageSrc={products[0].node.images.edges[0].node.originalSrc}
+      imageSrc={products[0].node.images.edges[0]?.node.originalSrc}
     />
   </div>
   <div class="w-full lg:h-full lg:w-1/3">
@@ -23,7 +23,7 @@
         title={products[1].node.title}
         price={products[1].node.priceRange.maxVariantPrice.amount}
         currencyCode={products[1].node.priceRange.maxVariantPrice.currencyCode}
-        imageSrc={products[1].node.images.edges[0].node.originalSrc}
+        imageSrc={products[1].node.images.edges[0]?.node.originalSrc}
       />
     </div>
     <div class="h-[60vh] w-full bg-svelteOrange lg:h-1/2">

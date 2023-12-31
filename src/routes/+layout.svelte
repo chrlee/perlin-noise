@@ -97,7 +97,7 @@
   }
 </script>
 
-<main class={`${showCart ? 'h-screen' : 'min-h-screen'} text-white overflow-hidden`}>
+<main>
   {#if showCart}
     <ShoppingCart
       items={cartItems}
@@ -109,8 +109,16 @@
     />
   {/if}
   <Header on:openCart={openCart} />
-  <div class="min-h-screen overflow-scroll">
+  <div>
     <slot />
     <Footer />
   </div>
 </main>
+
+<style>
+  main {
+    overflow: hidden;
+    color: white;
+    min-height: 100vh;
+  }
+</style>
