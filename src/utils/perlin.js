@@ -37,60 +37,58 @@ const perm = [
   254, 138, 236, 205, 93, 222, 114, 67, 29, 24, 72, 243, 141, 128, 195, 78, 66, 215, 61, 156, 180
 ];
 
-function grad3(  hash,  x,  y ,  z ) {
-    let h = hash & 15;     // Convert low 4 bits of hash code into 12 simple
-    let u = h<8 ? x : y; // gradient directions, and compute dot product.
-    let v = h<4 ? y : h==12||h==14 ? x : z; // Fix repeats at h = 12 to 15
-    return ((h&1)? -u : u) + ((h&2)? -v : v);
+function grad3(hash, x, y, z) {
+  let h = hash & 15; // Convert low 4 bits of hash code into 12 simple
+  let u = h < 8 ? x : y; // gradient directions, and compute dot product.
+  let v = h < 4 ? y : h == 12 || h == 14 ? x : z; // Fix repeats at h = 12 to 15
+  return (h & 1 ? -u : u) + (h & 2 ? -v : v);
 }
 
-export function noise3(  x,  y,  z )
-{
-    let ix0, iy0, ix1, iy1, iz0, iz1;
-    let fx0, fy0, fz0, fx1, fy1, fz1;
-    let s, t, r;
-    let nxy0, nxy1, nx0, nx1, n0, n1;
+export function noise3(x, y, z) {
+  let ix0, iy0, ix1, iy1, iz0, iz1;
+  let fx0, fy0, fz0, fx1, fy1, fz1;
+  let s, t, r;
+  let nxy0, nxy1, nx0, nx1, n0, n1;
 
-    ix0 = Math.floor( x ); // Integer part of x
-    iy0 = Math.floor( y ); // Integer part of y
-    iz0 = Math.floor( z ); // Integer part of z
-    fx0 = x - ix0;        // Fractional part of x
-    fy0 = y - iy0;        // Fractional part of y
-    fz0 = z - iz0;        // Fractional part of z
-    fx1 = fx0 - 1.0;
-    fy1 = fy0 - 1.0;
-    fz1 = fz0 - 1.0;
-    ix1 = ( ix0 + 1 ) & 0xff; // Wrap to 0..255
-    iy1 = ( iy0 + 1 ) & 0xff;
-    iz1 = ( iz0 + 1 ) & 0xff;
-    ix0 = ix0 & 0xff;
-    iy0 = iy0 & 0xff;
-    iz0 = iz0 & 0xff;
+  ix0 = Math.floor(x); // Integer part of x
+  iy0 = Math.floor(y); // Integer part of y
+  iz0 = Math.floor(z); // Integer part of z
+  fx0 = x - ix0; // Fractional part of x
+  fy0 = y - iy0; // Fractional part of y
+  fz0 = z - iz0; // Fractional part of z
+  fx1 = fx0 - 1.0;
+  fy1 = fy0 - 1.0;
+  fz1 = fz0 - 1.0;
+  ix1 = (ix0 + 1) & 0xff; // Wrap to 0..255
+  iy1 = (iy0 + 1) & 0xff;
+  iz1 = (iz0 + 1) & 0xff;
+  ix0 = ix0 & 0xff;
+  iy0 = iy0 & 0xff;
+  iz0 = iz0 & 0xff;
 
-    r = fade( fz0 );
-    t = fade( fy0 );
-    s = fade( fx0 );
+  r = fade(fz0);
+  t = fade(fy0);
+  s = fade(fx0);
 
-    nxy0 = grad3(perm[ix0 + perm[iy0 + perm[iz0]]], fx0, fy0, fz0);
-    nxy1 = grad3(perm[ix0 + perm[iy0 + perm[iz1]]], fx0, fy0, fz1);
-    nx0 = lerp( r, nxy0, nxy1 );
+  nxy0 = grad3(perm[ix0 + perm[iy0 + perm[iz0]]], fx0, fy0, fz0);
+  nxy1 = grad3(perm[ix0 + perm[iy0 + perm[iz1]]], fx0, fy0, fz1);
+  nx0 = lerp(r, nxy0, nxy1);
 
-    nxy0 = grad3(perm[ix0 + perm[iy1 + perm[iz0]]], fx0, fy1, fz0);
-    nxy1 = grad3(perm[ix0 + perm[iy1 + perm[iz1]]], fx0, fy1, fz1);
-    nx1 = lerp( r, nxy0, nxy1 );
+  nxy0 = grad3(perm[ix0 + perm[iy1 + perm[iz0]]], fx0, fy1, fz0);
+  nxy1 = grad3(perm[ix0 + perm[iy1 + perm[iz1]]], fx0, fy1, fz1);
+  nx1 = lerp(r, nxy0, nxy1);
 
-    n0 = lerp( t, nx0, nx1 );
+  n0 = lerp(t, nx0, nx1);
 
-    nxy0 = grad3(perm[ix1 + perm[iy0 + perm[iz0]]], fx1, fy0, fz0);
-    nxy1 = grad3(perm[ix1 + perm[iy0 + perm[iz1]]], fx1, fy0, fz1);
-    nx0 = lerp( r, nxy0, nxy1 );
+  nxy0 = grad3(perm[ix1 + perm[iy0 + perm[iz0]]], fx1, fy0, fz0);
+  nxy1 = grad3(perm[ix1 + perm[iy0 + perm[iz1]]], fx1, fy0, fz1);
+  nx0 = lerp(r, nxy0, nxy1);
 
-    nxy0 = grad3(perm[ix1 + perm[iy1 + perm[iz0]]], fx1, fy1, fz0);
-    nxy1 = grad3(perm[ix1 + perm[iy1 + perm[iz1]]], fx1, fy1, fz1);
-    nx1 = lerp( r, nxy0, nxy1 );
+  nxy0 = grad3(perm[ix1 + perm[iy1 + perm[iz0]]], fx1, fy1, fz0);
+  nxy1 = grad3(perm[ix1 + perm[iy1 + perm[iz1]]], fx1, fy1, fz1);
+  nx1 = lerp(r, nxy0, nxy1);
 
-    n1 = lerp( t, nx0, nx1 );
+  n1 = lerp(t, nx0, nx1);
 
-    return scale(0.936 * ( lerp( s, n0, n1 ) ));
+  return scale(0.936 * lerp(s, n0, n1));
 }
-
