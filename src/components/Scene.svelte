@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { T, useTask, useThrelte } from '@threlte/core';
+  import { T, useTask } from '@threlte/core';
   import { OrbitControls } from '@threlte/extras';
-  import { Color, PlaneGeometry} from 'three';
+  import { PlaneGeometry} from 'three';
   import { FontLoader } from 'three/addons/loaders/FontLoader.js';
   import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
   import { noise3 } from '$utils/perlin.js'; 
 
   const loader = new FontLoader();
   let textGeometry;
-  const font = loader.load('/helvetiker.typeface.json', (font) => {
+  loader.load('/helvetiker.typeface.json', (font) => {
     textGeometry = new TextGeometry(
       'perlin noise',
       {
@@ -22,18 +22,17 @@
     textGeometry.computeBoundingBox();
   });
   let geometry = new PlaneGeometry(20, 20, 50, 50);
-  let vertices = geometry.getAttribute('position').array;
+  let vertices = geometry.getAttribute('position');
   let maxFrames = 1000;
   let t = 0;
 
   useTask(() => {
-    geometry = new PlaneGeometry(20, 20, 50, 50);
-    vertices = geometry.getAttribute('position').array;
-    for (let i = 0; i < vertices.length; i+=3) {
-      const x = vertices[i];
-      const y = vertices[i + 1];
-      vertices[i + 2] = noise3(x / 3, y / 3, Math.sin(Math.PI * (t/500)))*5;
+    for (let i = 0; i < vertices.array.length; i+=3) {
+      const x = vertices.array[i];
+      const y = vertices.array[i + 1];
+      vertices.array[i + 2] = noise3(x / 3, y / 3, Math.sin(Math.PI * (t/500)))*5;
     }
+    vertices.needsUpdate = true;
     if (t < maxFrames) {
       t++;
     } else {
