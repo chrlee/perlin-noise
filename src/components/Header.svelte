@@ -26,7 +26,7 @@
   <div class="flex items-baseline">
     <div class="mr-4" class:active={currentRoute === '/'}>
       <a href="/" data-sveltekit-prefetch class="">
-        <h1 class="text-2xl font-thin text-white">perlin noise</h1> 
+        <h1 class="text-2xl font-thin ">perlin noise</h1> 
       </a>
     </div>
     <div class="hidden lg:flex">
@@ -35,7 +35,7 @@
           <a
             data-sveltekit-prefetch
             href={tab.path}
-            class={`hover:opacity-100 px-2 py-1 text-white rounded-lg ${
+            class={`hover:opacity-100 px-2 py-1 rounded-lg ${
               currentRoute === tab.path ? 'opacity-100' : 'opacity-75'
             }`}>{tab.name}</a
           >
@@ -103,7 +103,7 @@
               <a
                 data-sveltekit-prefetch
                 href={tab.path}
-                class={`hover:opacity-100 px-2 py-1 text-white font-bold text-xl rounded-lg ${
+                class={`hover:opacity-100 px-2 py-1 font-bold text-xl rounded-lg ${
                   currentRoute === tab.path ? 'opacity-100' : 'opacity-75'
                 }`}>{tab.name}</a
               >

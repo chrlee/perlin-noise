@@ -116,6 +116,12 @@
 </main>
 
 <style>
+  @import 'src/variables.css';
+
+  :global(body), :global(section), :global(div) {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
   main {
     overflow: hidden;
     color: white;
