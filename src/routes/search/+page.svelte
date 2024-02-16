@@ -17,7 +17,7 @@
   <ul class="grid grid-flow-row gap-4 sm:grid-cols-2 md:grid-cols-3">
     {#each displayedProducts as product, i (product.node.id)}
       <li>
-        <div class="group relative block aspect-square overflow-hidden bg-dark">
+        <div class="gridTile">
           <GridTile
             title={product.node.title}
             href={`/product/${product.node.handle}`}
@@ -32,3 +32,13 @@
     {/each}
   </ul>
 </div>
+
+<style>
+.gridTile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+</style>
